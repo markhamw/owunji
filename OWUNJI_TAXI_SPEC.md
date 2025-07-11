@@ -26,15 +26,15 @@ Owunji Taxi is a modern web-based Space Taxi clone built with Phaser 3, TypeScri
 
 ### Game Elements
 
--   **Taxi**: Futuristic ship with thruster animations and directional thrusters
--   **Buildings**: Different color skyscrapers spawn randomly on each map. Buildings act as game obstacles and will cause the player to crash if impacted. Buildings can be 1-2 or many, situated next to each other with only the surface of each building reachable. Buildings should be roughly 10% - 60% the height of the screen.
--   **Landing Platforms**: Buildings have a chance to spawn landing platforms on their sides. These platforms can contain:
+-   **Taxi**: Procedurally generated ship with thruster animations and directional thrusters
+-   **Buildings**: Procedurally generated skyscrapers with random heights, colors, and positions. Buildings act as game obstacles and will cause the player to crash if impacted. Buildings can be 1-2 or many, situated next to each other with only the surface of each building reachable. Buildings should be roughly 10% - 60% the height of the screen.
+-   **Landing Platforms**: Generated geometric shapes extending from building sides. These platforms can contain:
     -   Passengers waiting for pickup
     -   Nothing (empty platform)
     -   Decorative objects (balcony chairs, tables, umbrellas, etc.)
--   **Passengers**: Basic stick figures that wave their hand and jump up and down. They start to flash red and jump more after they are not picked up in time
--   **Fuel**: One container of fuel spawns on each map on a random platform. If the player(Taxi) lands on it they will receive fuel.
--   **UI**: Clean Futuristic Text
+-   **Passengers**: Procedurally generated stick figures that wave their hand and jump up and down. They start to flash red and jump more after they are not picked up in time
+-   **Fuel**: Generated fuel containers with geometric shapes that spawn on random platforms
+-   **UI**: All text and interface elements generated at runtime
 
 ## Game Mechanics
 
@@ -157,7 +157,11 @@ interface LandingPlatform {
 interface DecorativeObject {
     id: string;
     type: "chair" | "table" | "umbrella" | "plant";
-    sprite: string;
+    geometry: {
+        shape: "rectangle" | "circle" | "triangle";
+        dimensions: { width: number; height: number };
+        color: string;
+    };
 }
 ```
 
@@ -184,6 +188,31 @@ interface GameState {
 -   **Movement**: Taxi moves within the fixed camera view
 -   **Buildings**: Appear as vertical rectangles from side view
 -   **Platforms**: Extend horizontally from building sides
+
+## Procedural Content Generation
+
+### Overview
+
+-   **All Game Objects**: Buildings, platforms, passengers, and decorative objects are procedurally generated
+-   **No Pre-made Assets**: No static sprites or textures - everything is created at runtime
+-   **Dynamic Generation**: Content is generated fresh for each game session
+-   **Algorithm-based**: All visual elements use mathematical algorithms and geometric shapes
+
+### Generated Elements
+
+-   **Buildings**: Procedurally generated rectangles with random heights, colors, and positions
+-   **Landing Platforms**: Generated as geometric shapes extending from building sides
+-   **Passengers**: Simple stick figures created with basic shapes and animations
+-   **Decorative Objects**: Geometric representations of chairs, tables, umbrellas, etc.
+-   **UI Elements**: All text and interface elements are generated, not pre-rendered
+-   **Particle Effects**: Thruster flames and explosions generated mathematically
+
+### Generation Algorithms
+
+-   **Building Generation**: Random height (10-60% screen), random color from palette, adjacent placement
+-   **Platform Generation**: Random chance per building side, random size within constraints
+-   **Content Distribution**: Random assignment of passengers, decorative objects, or empty spaces
+-   **Color Schemes**: Generated from predefined color palettes
 
 ## Level Design
 

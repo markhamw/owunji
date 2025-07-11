@@ -122,3 +122,6 @@ test-results.xml
 *.pid
 *.seed
 *.pid.lock
+
+.cursor.json
+.cursorignore
