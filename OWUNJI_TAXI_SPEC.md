@@ -176,11 +176,22 @@ interface GameState {
 }
 ```
 
+## Camera & Visual Perspective
+
+-   **Perspective**: 2D side-view (like classic Space Taxi)
+-   **Camera**: Fixed position, no scrolling
+-   **View**: Single screen viewport (1920x1080)
+-   **Movement**: Taxi moves within the fixed camera view
+-   **Buildings**: Appear as vertical rectangles from side view
+-   **Platforms**: Extend horizontally from building sides
+
 ## Level Design
 
 ### Map Generation
 
 -   **Single Screen**: 1920x1080 pixel play area
+-   **Fixed Camera**: No scrolling - everything happens on one screen
+-   **2D Side View**: Buildings appear as vertical structures
 -   **Random Building Spawn**: 1-2 buildings or many buildings situated next to each other
 -   **Building Heights**: 10% - 60% of screen height
 -   **Landing Platform Generation**: Each building has a chance to spawn landing platforms
