@@ -1,0 +1,155 @@
+# Space Taxi Clone - Game Specification
+
+## Game Overview
+
+A simple single-screen Space Taxi game implemented in Python with a minimalist black and white aesthetic. The player controls a taxi that must pick up passengers and deliver them to their destinations while managing fuel and avoiding crashes.
+
+## Technical Requirements
+
+-   **Language**: Python 3.7+
+-   **Graphics Library**: Pygame
+-   **Display**: Single screen (800x600 pixels)
+-   **Color Scheme**: Black and white only
+-   **Frame Rate**: 60 FPS target
+
+## Visual Design
+
+-   **Background**: Black
+-   **Foreground Elements**: White
+-   **Taxi**: Simple white rectangle with basic thruster animation
+-   **Platforms**: White rectangular platforms
+-   **Passengers**: Small white rectangles or simple stick figures
+-   **UI Elements**: White text on black background
+-   **Fuel Bar**: Simple white outline bar
+
+## Game Mechanics
+
+### Taxi Physics
+
+-   **Gravity**: Constant downward acceleration
+-   **Thrust**: Upward and directional thrust when keys pressed
+-   **Fuel Consumption**: Thrust uses fuel
+-   **Collision Detection**: Taxi crashes if hitting platforms too hard or walls
+-   **Landing**: Gentle landing required (low velocity)
+
+### Passenger System
+
+-   **Spawn**: Passengers appear at random platform locations
+-   **Pickup**: Land near passenger to pick them up
+-   **Destination**: Each passenger has a specific destination platform
+-   **Delivery**: Drop off passenger at correct location for points
+
+### Fuel System
+
+-   **Starting Fuel**: 100 units
+-   **Consumption Rate**: 1 unit per second of thrust
+-   **Fuel Stations**: Optional - platforms that refuel the taxi
+-   **Game Over**: Runs out of fuel
+
+## Controls
+
+-   **Up Arrow**: Main thruster (upward thrust)
+-   **Left Arrow**: Left thruster (leftward thrust + slight upward)
+-   **Right Arrow**: Right thruster (rightward thrust + slight upward)
+-   **Space Bar**: Emergency brake (rapid deceleration, high fuel cost)
+-   **R**: Restart game
+-   **ESC**: Quit game
+
+## Game Objects
+
+### Taxi
+
+-   Position: (x, y) coordinates
+-   Velocity: (vx, vy) vector
+-   Fuel: Current fuel level
+-   Passenger: Currently carried passenger (if any)
+-   State: Flying, Landed, Crashed
+
+### Passenger
+
+-   Position: (x, y) coordinates
+-   Destination: Target platform ID
+-   Status: Waiting, Picked up, Delivered
+-   Points Value: 10-50 points based on distance
+
+### Platform
+
+-   Position: (x, y) coordinates
+-   Width: Platform width
+-   Type: Regular, Fuel Station, Passenger Spawn
+
+### Game State
+
+-   Score: Current score
+-   Fuel: Current fuel level
+-   Game Status: Playing, Game Over, Paused
+-   Passengers: List of active passengers
+
+## Level Design
+
+-   **Single Screen**: 800x600 pixel play area
+-   **Platforms**: 5-8 platforms at various heights
+-   **Walls**: Screen boundaries are solid walls
+-   **Landing Pads**: Flat areas for safe landing
+-   **Obstacles**: Some platforms may have vertical obstacles
+
+## Win/Loss Conditions
+
+-   **Game Over**:
+    -   Fuel runs out
+    -   Taxi crashes (high speed collision)
+    -   Taxi hits screen boundaries
+-   **Scoring**:
+    -   Successful passenger delivery: 10-50 points
+    -   Fuel remaining bonus: 1 point per fuel unit
+    -   Time bonus: Faster delivery = more points
+-   **High Score**: Track best score in session
+
+## UI Elements
+
+-   **Score Display**: Top-left corner
+-   **Fuel Bar**: Top-right corner
+-   **Passenger Info**: Bottom center (current passenger destination)
+-   **Game Over Screen**: Final score and restart option
+-   **Instructions**: Brief control instructions on start screen
+
+## Implementation Plan
+
+1. **Setup**: Initialize Pygame, create game window
+2. **Game Objects**: Create classes for Taxi, Passenger, Platform
+3. **Physics**: Implement gravity, thrust, collision detection
+4. **Rendering**: Draw all game objects in black and white
+5. **Input Handling**: Implement keyboard controls
+6. **Game Logic**: Passenger spawning, pickup/delivery system
+7. **UI**: Score display, fuel bar, game over screen
+8. **Polish**: Sound effects (optional), particle effects for thrust
+
+## File Structure
+
+```
+MoonsecGame/
+├── main.py              # Main game loop
+├── game_objects.py      # Taxi, Passenger, Platform classes
+├── physics.py           # Physics calculations
+├── renderer.py          # Drawing functions
+├── input_handler.py     # Keyboard input processing
+├── game_state.py        # Game state management
+└── constants.py         # Game constants and settings
+```
+
+## Success Criteria
+
+-   Playable game with core mechanics working
+-   Smooth 60 FPS gameplay
+-   Intuitive controls
+-   Clear visual feedback
+-   Proper collision detection
+-   Engaging gameplay loop (pick up → deliver → repeat)
+
+## Future Enhancements (Optional)
+
+-   Multiple levels with different layouts
+-   Power-ups (extra fuel, bonus points)
+-   Different passenger types with special requirements
+-   Weather effects (wind)
+-   Multiplayer support
