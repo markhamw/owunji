@@ -1,64 +1,65 @@
-# Project Name
+# 🚕 Owunji Taxi
 
-A brief description of your project here.
+A futuristic space taxi game built with Phaser 3, TypeScript, and Vite.
 
-## Requirements
+<div style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%); padding: 20px; border-radius: 8px; margin: 20px 0;">
+  <div style="color: #00d4ff; font-size: 18px; margin-bottom: 10px;">🎮 Space Taxi Adventure</div>
+  <div style="color: #b026ff; font-size: 14px; margin-bottom: 8px;">Pick up passengers • Avoid crashes • Build your bank</div>
+  <div style="color: #ffd700; font-size: 12px;">$$$ Manage your taxi business in space! $$$</div>
+</div>
 
-[Node.js](https://nodejs.org) is required to install dependencies and run scripts via `npm`.
+## 🚀 Quick Start
 
-## Available Commands
+```bash
+# Install dependencies
+npm install
 
-| Command         | Description                                    |
-| --------------- | ---------------------------------------------- |
-| `npm install`   | Install project dependencies                   |
-| `npm run dev`   | Launch a development web server                |
-| `npm run build` | Create a production build in the `dist` folder |
+# Start development server
+npm run dev
 
-## Getting Started
-
-After cloning the repo, run `npm install` from your project directory. Then, you can start the local development server by running `npm run dev`.
-
-The local development server runs on `http://localhost:8080` by default.
-
-Once the server is running you can edit any of the files in the `src` folder. Vite will automatically recompile your code and then reload the browser.
-
-## Project Structure
-
-| Path               | Description                                                     |
-| ------------------ | --------------------------------------------------------------- |
-| `index.html`       | A basic HTML page to contain the application.                   |
-| `public/assets`    | Static assets, sprites, audio, etc. Served directly at runtime. |
-| `public/style.css` | Global layout styles.                                           |
-| `src/main.ts`      | Application bootstrap.                                          |
-| `src/game`         | Folder containing the game code.                                |
-| `src/game/main.ts` | Game entry point: configures and starts the game.               |
-| `src/game/scenes`  | Folder with all game scenes.                                    |
-
-## Handling Assets
-
-Vite supports loading assets via JavaScript module `import` statements.
-
-This template provides support for both embedding assets and also loading them from a static folder. To embed an asset, you can import it at the top of the JavaScript file you are using it in:
-
-```js
-import logoImg from "./assets/logo.png";
+# Build for production
+npm run build
 ```
 
-To load static files such as audio files, videos, etc place them into the `public/assets` folder. Then you can use this path in your code:
+The game will be available at `http://localhost:8080`
 
-```js
-// Example of loading a static image from the public/assets folder:
-const background = "assets/bg.png";
+## 🎨 Game Colors
+
+-   **Deep Space**: `#0a0a0a` (Background)
+-   **Electric Blue**: `#00d4ff` (UI Elements)
+-   **Neon Purple**: `#b026ff` (Accents)
+-   **Hot Pink**: `#ff006e` (Warnings)
+-   **Gold**: `#ffd700` (Currency)
+
+## 🎯 Game Features
+
+-   **Building-based gameplay** - Navigate between skyscrapers
+-   **Economic system** - Earn money, pay for crashes
+-   **Fuel management** - Strategic resource planning
+-   **Continuous play** - No levels, just endless taxi missions
+
+## 🛠️ Tech Stack
+
+-   **Phaser 3.90.0** - Game engine
+-   **TypeScript 5.7.2** - Type safety
+-   **Vite 6.3.1** - Build tool
+-   **Firebase** - Hosting
+
+## 📁 Project Structure
+
+```
+src/
+├── game/
+│   ├── scenes/     # Game scenes (Menu, Game, GameOver)
+│   ├── constants/  # Game constants and config
+│   └── main.ts     # Game entry point
+├── main.ts         # App bootstrap
+public/
+└── assets/         # Game assets (sprites, audio)
 ```
 
-When you issue the `npm run build` command, all static assets are automatically copied to the `dist/assets` folder.
+---
 
-## Deploying to Production
-
-After you run the `npm run build` command, your code will be built into a single bundle and saved to the `dist` folder, along with any other assets your project imported, or stored in the public assets folder.
-
-In order to deploy your application, you will need to upload _all_ of the contents of the `dist` folder to a public facing web server.
-
-## Customizing the Build
-
-If you want to customize your build, such as adding plugins (i.e. for loading CSS or fonts), you can modify the `vite/config.*.mjs` file for cross-project changes, or you can modify and/or create new configuration files and target them in specific npm tasks inside of `package.json`. Please see the [Vite documentation](https://vitejs.dev/) for more information.
+<div style="text-align: center; color: #00d4ff; font-size: 12px; margin-top: 30px;">
+  🚀 Ready to become the best space taxi driver? 🚀
+</div>
